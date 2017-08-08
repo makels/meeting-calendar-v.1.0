@@ -33,3 +33,5 @@ Users can view the details of all events from all users. Editing and deleting ar
 Basic requirements: PHP 5.6 and higher + MySQL.
 
 To setup this system start installer from http:/yourdomain.com/install
+
+Demo: http://meeting.makels.com
