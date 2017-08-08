@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<settings>
+  <!-- Database settings  -->
+  <database>
+    <host>localhost</host>
+    <port>3306</port>
+    <name>meeting</name>
+    <user>root</user>
+    <pass>Zerg1979</pass>
+  </database>
+</settings>
