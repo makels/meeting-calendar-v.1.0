@@ -8,7 +8,11 @@
 
 Class Model_User extends DB {
 
-  private $table = "members";
+  private $table;
+
+  function __construct() {
+    $this->table = DB_PREFIX . "users";
+  }
 
   public function get($id) {
     $user = $this->getRow(sprintf("SELECT * FROM `%s` WHERE `id` = %s", $this->table, $id));
@@ -17,13 +21,17 @@ Class Model_User extends DB {
   }
 
   public function getByLogin($login) {
-    return $this->getRow(sprintf("SELECT * FROM `%s` WHERE `su` = 1 AND `email` = '%s'", $this->table, $login));
+    return $this->getRow(sprintf("SELECT * FROM `%s` WHERE `active` = 1 AND `su` = 1 AND `email` = '%s'", $this->table, $login));
   }
 
   public function createAdmin($email, $pass) {
-    $id = $this->insert(sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`) VALUES ('%s','%s',md5('%s'), 1)",
+    $row = $this->getRow(sprintf("SELECT count(email) as `count_emails` FROM `%s` WHERE `email` = '%s'", $this->table, $email));
+    if($row['count_emails'] > 0) {
+      return false;
+    }
+    $id = $this->insert(sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`, `invite_key`, `active`) VALUES ('%s','%s',md5('%s'), 1, '', 1)",
         $this->table, $email, "Administrator", $pass));
-    return $this->get($id);
+    return true;
   }
 
   public function deleteUserByEmail($email) {
@@ -31,9 +39,16 @@ Class Model_User extends DB {
   }
 
   public function add($data) {
-    $id = $this->insert(sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`) VALUES ('%s','%s',md5('%s'), '%s', 1)",
+    $id = $this->insert(sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`, `invite_key`, `active`) VALUES ('%s','%s',md5('%s'), '%s', %s, '', 1)",
         $this->table, $data["email"], $data["display_name"], $data["pass"], $data["su"]));
     return $this->get($id);
+  }
+
+  public function invite($email) {
+    $uid = uid();
+    $this->insert(sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`, `invite_key`, `active`) VALUES ('%s','%s',md5('%s'), '%s', %s, '%s', 0)",
+        $this->table, $email, '', '', 0, $uid));
+    return $uid;
   }
 
 }

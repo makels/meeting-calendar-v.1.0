@@ -16,3 +16,4 @@
 <script src='/theme/js/moment.min.js' type="text/javascript"></script>
 <script src='/theme/js/jquery.min.js' type="text/javascript"></script>
 <script src='/theme/js/fullcalendar.js' type="text/javascript"></script>
+<script src='/theme/js/app.js' type="text/javascript"></script>

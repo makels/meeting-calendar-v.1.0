@@ -84,16 +84,24 @@ Class DB {
   }
   
   public static function install() {
-    
-    DB::execute("CREATE TABLE IF NOT EXISTS `members` (
+    global $registry;
+    $link = $registry->get("dl");
+
+    // Create DATABASE
+    DB::execute("CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "`");
+    mysqli_select_db($link, DB_NAME);
+    // Create members
+    DB::execute("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "users` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `email` varchar(255) NOT NULL,
                   `display_name` varchar(255) NOT NULL,
                   `pass` varchar(255) NOT NULL,
                   `su` int(11) NOT NULL,
+                  `invite_key` varchar(255) NOT NULL,
+                  `active` int(11) NOT NULL,
                   PRIMARY KEY (`id`),
                   UNIQUE KEY `email` (`email`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1");
     
   }
 

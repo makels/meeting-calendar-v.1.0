@@ -40,6 +40,9 @@ try {
   } else {
     mysqli_set_charset($db_link, "UTF8");
     $registry->set('dl', $db_link);
+    // User
+    $user = User::getCurrent();
+    $registry->set("user", $user);
   }
 } catch (Exception $ex) {
   if(Http::get("route") != "installer") {
@@ -63,9 +66,5 @@ $registry->set("controller", array(
 $system_config = new Config();
 $smarty->assign("system_config", json_encode($system_config->getAll()));
 $smarty->assign("controller", $registry->get("controller"));
-
-// User
-$user = User::getCurrent();
-$registry->set("user", $user);
 
 $router->delegate();

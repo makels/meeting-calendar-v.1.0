@@ -2,10 +2,11 @@
 <settings>
   <!-- Database settings  -->
   <database>
-    <host></host>
-    <port></port>
-    <name></name>
-    <user></user>
-    <pass></pass>
+    <host>localhost</host>
+    <port>3306</port>
+    <name>meeting</name>
+    <prefix>mc_</prefix>
+    <user>root</user>
+    <pass>Zerg1979</pass>
   </database>
 </settings>

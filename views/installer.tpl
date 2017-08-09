@@ -36,7 +36,11 @@
                         </tr>
                         <tr>
                             <td class="var_name">Database name:</td>
-                            <td><input type="text" name="db_name" value="{if $name != ""}{$name}{else}{if isset($smarty.post.db_name)}{$smarty.post.db_name}{/if}{/if}" /></td>
+                            <td><input type="text" name="db_name" value="{if $name != ""}{$name}{else}{if isset($smarty.post.db_name)}{$smarty.post.db_name}{else}meeting{/if}{/if}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="var_name">Tables prefix:</td>
+                            <td><input type="text" name="db_prefix" value="{if $prefix != ""}{$prefix}{else}{if isset($smarty.post.prefix)}{$smarty.post.prefix}{else}mc_{/if}{/if}" /></td>
                         </tr>
                         <tr>
                             <td class="var_name">Administrator e-mail:</td>
