@@ -7,6 +7,7 @@
 <!-- STYLES -->
 <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
 <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+<link rel="stylesheet" href="/theme/css/zwindow.css" type="text/css" />
 <link rel="stylesheet" href="/theme/css/font-awesome.min.css" type="text/css" />
 <link rel="stylesheet" href="/theme/css/jquery-ui.min.css" type="text/css" />
 <link rel="stylesheet" href="/theme/css/fullcalendar.css" type="text/css" />
@@ -16,4 +17,5 @@
 <script src='/theme/js/moment.min.js' type="text/javascript"></script>
 <script src='/theme/js/jquery.min.js' type="text/javascript"></script>
 <script src='/theme/js/fullcalendar.js' type="text/javascript"></script>
+<script src='/theme/js/zwindow.js' type="text/javascript"></script>
 <script src='/theme/js/app.js' type="text/javascript"></script>

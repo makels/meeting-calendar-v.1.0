@@ -21,7 +21,7 @@ Class Model_User extends DB {
   }
 
   public function getByLogin($login) {
-    return $this->getRow(sprintf("SELECT * FROM `%s` WHERE `active` = 1 AND `su` = 1 AND `email` = '%s'", $this->table, $login));
+    return $this->getRow(sprintf("SELECT * FROM `%s` WHERE `active` = 1 AND `email` = '%s'", $this->table, $login));
   }
 
   public function createAdmin($email, $pass) {
@@ -45,10 +45,14 @@ Class Model_User extends DB {
   }
 
   public function invite($email) {
-    $uid = uid();
-    $this->insert(sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`, `invite_key`, `active`) VALUES ('%s','%s',md5('%s'), '%s', %s, '%s', 0)",
-        $this->table, $email, '', '', 0, $uid));
+    $uid = md5(uniqid());
+    $sql = sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`, `invite_key`, `active`) VALUES ('%s','', '', 0, '%s', 0)", $this->table, $email, $uid);
+    $this->insert($sql);
     return $uid;
+  }
+
+  public function acceptInvite($data) {
+    $this->execute(sprintf("UPDATE `%s` SET `display_name` = '%s', `pass` = '%s', `active` = 1 WHERE `invite_key` = '%s'", $this->table, $data["display_name"], md5($data["password"]), $data["invite_key"]));
   }
 
 }

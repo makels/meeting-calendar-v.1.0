@@ -1,0 +1,42 @@
+.zmask {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: #999;
+  opacity: .8;
+	z-index: 9999;
+	display: none;
+}
+
+#zwindow {
+	display: none;
+  position: fixed;
+  z-index: 100000;
+  min-width: 200px;
+  min-height: 120px;
+}
+
+#zwindow .zbody {
+	padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #fff;
+}
+
+#zwindow .zbuttons {
+  padding: 10px 10px 10px 20px;
+  height: 20px;
+}
+
+.zbuttons button {
+  float: right;
+  margin-right: 10px;
+}
+
+.zclose-btn {
+  position: absolute;
+  right: 10px;
+  top: 2px;
+  cursor: pointer;
+}

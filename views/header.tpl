@@ -6,7 +6,7 @@
         {if $user != null && $user->is_logged() === true}
         <div class="user_info">
             <button onclick="document.location.href = '/auth/logout';">Sign out</button>
-            {if $user->is_admin() === true}<button onclick="">Invite user</button>{/if}
+            {if $user->is_admin() === true}<button onclick="app.invite();">Invite user</button>{/if}
             {$user->display_name}&nbsp;&nbsp;
         </div>
         {/if}
