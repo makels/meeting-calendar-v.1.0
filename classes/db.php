@@ -82,5 +82,19 @@ Class DB {
 
     mysqli_stmt_execute($res);
   }
+  
+  public static function install() {
+    
+    DB::execute("CREATE TABLE IF NOT EXISTS `members` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `email` varchar(255) NOT NULL,
+                  `display_name` varchar(255) NOT NULL,
+                  `pass` varchar(255) NOT NULL,
+                  `su` int(11) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `email` (`email`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
+    
+  }
 
 }

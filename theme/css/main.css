@@ -1,0 +1,272 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333;
+    background-color: #eee;
+}
+
+.background {
+    background: #1e5799;
+    color: #fff;
+}
+
+.shadow {
+    -webkit-box-shadow: 2px 2px 12px 2px #999;
+    -moz-box-shadow: 2px 2px 12px 2px #999;
+    box-shadow: 2px 2px 12px 2px #999;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+.error {
+    color: #b70308;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+.success {
+    color: #1BBF10;
+    font-weight: bold;
+}
+
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a.btn:hover {
+    color: #fff !important;
+}
+
+label {
+    cursor: pointer;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    vertical-align: -5px;
+    margin: 3px;
+    padding: 0;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+}
+
+ul li ul {
+    padding: 0 0 0 15px;
+}
+
+input, select, textarea {
+    padding: 5px;
+    border: 1px solid #1F5B9E;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    border: 1px solid #1F5B9E;
+    float: left;
+    background-color: #428CCE;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.module-title {
+    line-height: 30px;
+    padding-left: 10px;
+    border-left: 1px solid #07458A;
+    border-right: 1px solid #07458A;
+    border-top: 1px solid #07458A;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.login-window {
+    border: 1px solid #246FB7;
+}
+
+.field-v .fa {
+    color: #246FB7;
+}
+
+.field-v {
+    position: relative;
+}
+
+.field-v .fa {
+    font-size: 18px;
+    position: absolute;
+    top: 22px;
+    left: 10px;
+    z-index: 999;
+}
+
+.content {
+    width: 980px;
+    margin: 20px auto;
+
+}
+
+
+.login .field {
+    position: relative;
+    float: left;
+}
+
+.login input {
+    width: 100px;
+    float: left;
+    margin-right: 5px;
+    padding-left: 25px;
+}
+
+.module .fields_group {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+    margin-bottom: 10px;
+    color: #1F5B9E;
+    border-bottom: 1px dotted #1F5B9E;
+}
+
+header {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #1F5B9E;
+}
+
+header .header-wrapper {
+    width: 980px;
+    margin: 0 auto;
+    line-height: 40px;
+    color: #fff;
+}
+
+.login-window {
+    width: 300px;
+    height: 180px;
+    background-color: #E2E0E0;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+
+.login-window button {
+    width: 100px;
+}
+
+.login-window-title {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.login-window-body {
+    padding:10px;
+}
+
+.login-window-body input {
+    padding-left: 30px;
+    font-size: 14px;
+    margin-top: 15px;
+    position: relative;
+    width: 240px;
+}
+
+.login-window-body button {
+    font-size: 14px;
+}
+
+.login-window-body .buttons {
+    margin: 15px auto;
+    width: 100px;
+}
+
+.module {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.module-wrapper {
+    padding: 10px;
+    border-left: 1px solid #D7D7D7;
+    border-right: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.panel.module .icon-wrapper {
+    width: 90px;
+    float: left;
+    margin-right: 30px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.panel.module .icon-wrapper img {
+    width: 64px;
+    height: 64px;
+}
+
+.panel.module .module-wrapper {
+    display: flex;
+}
+
+.module .var_name {
+    width: 300px;
+}
+
+.module input {
+    width: 200px;
+}
+
+.module input[type="file"] {
+    width: 250px;
+}
+
+.module input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.module select {
+    width: 212px;
+}
+
+.module textarea {
+    width: 250px;
+    height: 100px;
+}
+
+.module .fields_group.small {
+    font-size: 12px;
+}
+
+.module-title .fa-btn {
+    float: right;
+    width: 25px;
+    cursor: pointer;
+}
+
+.installer {
+    width: 500px;
+    background-color: #fff;
+    margin: 0 auto;
+}

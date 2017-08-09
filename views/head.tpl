@@ -3,6 +3,16 @@
 <meta content="" name="description">
 <meta content="" name="keywords">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- STYLES -->
 <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
-<link href="theme/css/main.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/theme/js/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+<link rel="stylesheet" href="/theme/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/theme/css/jquery-ui.min.css" type="text/css" />
+<link rel="stylesheet" href="/theme/css/fullcalendar.css" type="text/css" />
+<link rel="stylesheet" href="/theme/css/fullcalendar.print.css" type="text/css" media="print" />
+
+<!-- SCRIPTS -->
+<script src='/theme/js/moment.min.js' type="text/javascript"></script>
+<script src='/theme/js/jquery.min.js' type="text/javascript"></script>
+<script src='/theme/js/fullcalendar.js' type="text/javascript"></script>
