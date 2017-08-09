@@ -18,7 +18,7 @@ Class Controller_Installer Extends Controller_Base {
         }
         $smarty->assign("host", $config->get("/settings/database/host"));
         $smarty->assign("port", $config->get("/settings/database/port"));
-        $smarty->assign("user", $config->get("/settings/database/user"));
+        $smarty->assign("db_user", $config->get("/settings/database/user"));
         $smarty->assign("pass", $config->get("/settings/database/pass"));
         $smarty->assign("name", $config->get("/settings/database/name"));
         $this->display("installer");
@@ -51,6 +51,7 @@ Class Controller_Installer Extends Controller_Base {
                     $this->registry->set('dl', $db_link);
                     DB::install();
                     $model = DB::loadModel("user");
+                    $model->deleteUserByEmail($admin_email);
                     $model->createAdmin($admin_email, $admin_pass);
                     Http::redirect("/");
                     exit;

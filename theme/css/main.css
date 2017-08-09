@@ -96,6 +96,15 @@ button {
     border-top-right-radius: 10px;
 }
 
+.logo {
+    width: 400px;
+    float: left;
+}
+
+.user_info {
+    float: right;
+}
+
 .login-window {
     border: 1px solid #246FB7;
 }
@@ -155,6 +164,11 @@ header .header-wrapper {
     margin: 0 auto;
     line-height: 40px;
     color: #fff;
+}
+
+.user_info button {
+    margin: 7px 7px 7px 0 ;
+    float: right;
 }
 
 .login-window {

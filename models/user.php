@@ -17,13 +17,17 @@ Class Model_User extends DB {
   }
 
   public function getByLogin($login) {
-    return $this->getRow(sprintf("SELECT * FROM `%s` WHERE `su` = 1 AND `name` = '%s'", $this->table, $login));
+    return $this->getRow(sprintf("SELECT * FROM `%s` WHERE `su` = 1 AND `email` = '%s'", $this->table, $login));
   }
 
   public function createAdmin($email, $pass) {
     $id = $this->insert(sprintf("INSERT INTO `%s` (`email`,`display_name`,`pass`, `su`) VALUES ('%s','%s',md5('%s'), 1)",
         $this->table, $email, "Administrator", $pass));
     return $this->get($id);
+  }
+
+  public function deleteUserByEmail($email) {
+    $this->execute(sprintf("DELETE FROM `%s` WHERE `email` = '%s'", $this->table, $email));
   }
 
   public function add($data) {

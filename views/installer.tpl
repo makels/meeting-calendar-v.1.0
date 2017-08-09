@@ -28,7 +28,7 @@
                         </tr>
                         <tr>
                             <td class="var_name">User:</td>
-                            <td><input type="text" name="db_user" value="{if $user != ""}{$user}{else}{if isset($smarty.post.db_user)}{$smarty.post.db_user}{/if}{/if}" /></td>
+                            <td><input type="text" name="db_user" value="{if $db_user != ""}{$db_user}{else}{if isset($smarty.post.db_user)}{$smarty.post.db_user}{/if}{/if}" /></td>
                         </tr>
                         <tr>
                             <td class="var_name">Pass:</td>

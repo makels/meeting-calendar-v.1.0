@@ -64,4 +64,8 @@ $system_config = new Config();
 $smarty->assign("system_config", json_encode($system_config->getAll()));
 $smarty->assign("controller", $registry->get("controller"));
 
+// User
+$user = User::getCurrent();
+$registry->set("user", $user);
+
 $router->delegate();

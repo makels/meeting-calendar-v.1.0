@@ -6,11 +6,11 @@
         <div class="login-window-body">
             <div class="field-v">
                 <div class="fa fa-user">&nbsp;</div>
-                <input type="text" name="login" placeholder="E-mail" autocomplete="off" />
+                <input type="email" name="login" placeholder="E-mail" autocomplete="on" />
             </div>
             <div class="field-v">
                 <div class="fa fa-lock">&nbsp;</div>
-                <input type="password" name="password" placeholder="Pass" autocomplete="off"  />
+                <input type="password" name="password" placeholder="Pass" autocomplete="on"  />
             </div>
             <div class="buttons">
                 <button class="gradient" type="submit">{fa_icon name="sign-in"}Sign in</button>

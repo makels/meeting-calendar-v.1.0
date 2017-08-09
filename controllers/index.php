@@ -8,7 +8,14 @@
 Class Controller_Index Extends Controller_Base {
 
   function index() {
-    $this->registerModule("auth/auth", "center_side");
+    $user = $this->registry->get("user");
+    $smarty = $this->registry->get("smarty");
+    $smarty->assign("user", $user);
+    if($user != null && $user->is_logged() === true) {
+      $this->registerModule("calendar/calendar", "center_side");
+    } else {
+      $this->registerModule("auth/auth", "center_side");
+    }
     $this->display();
   }
 
