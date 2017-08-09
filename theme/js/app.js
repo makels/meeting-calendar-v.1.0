@@ -84,13 +84,28 @@ var App = function() {
 
     this.init = function() {
         this.initMask();
+        this.initCalendar();
     }
 
     this.initMask = function() {
         $('.zmask').height($(window).height());
     }
 
-
+    this.initCalendar = function() {
+        $('#calendar').fullCalendar({
+            theme: true,
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay,listMonth'
+            },
+            defaultDate: moment().format('YYYY-MM-DD'),
+            navLinks: true,
+            editable: true,
+            eventLimit: true,
+            events: []
+        });
+    }
 }
 
 var app = new App();
