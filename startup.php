@@ -6,7 +6,7 @@
  * Time: 10:54
  */
 
-if (version_compare(phpversion(), '5.6.0', '<') == true) { die ('PHP5.6 Only'); }
+if (version_compare(phpversion(), '5.6.0', '<') == true) { die ('PHP 5.6+ Only'); }
 //if (version_compare(phpversion(), '5.5.9', '<') == true) { die ('Only PHP 5.5.9 and higher versions'); }
 
 require "classes/config.php";
