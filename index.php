@@ -1,5 +1,5 @@
 <?php
-if(!is_writable("/tmp")) {
+if(!is_writable($_SERVER["DOCUMENT_ROOT"] . "/tmp")) {
   echo "Set writable permission to folder /tmp";
   exit;
 }
