@@ -14,6 +14,10 @@ Class Model_User extends DB {
     $this->table = DB_PREFIX . "users";
   }
 
+  public function getAll() {
+    return $this->getRows(sprintf("SELECT * FROM `%s` WHERE `active` = 1 ORDER BY `email`", $this->table));
+  }
+
   public function get($id) {
     $user = $this->getRow(sprintf("SELECT * FROM `%s` WHERE `id` = %s", $this->table, $id));
     $user["is_admin"] = $user["su"];

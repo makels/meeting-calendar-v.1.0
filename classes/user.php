@@ -37,7 +37,7 @@ Class User {
       $user_row = $user_model->getByLogin($this->login);
       if(md5($this->password) == $user_row["pass"]) {
         $this->is_admin = $user_row["su"] == 1;
-        $this->display_name = $user_row["display_name"] . " - " . $user_row["email"];
+        $this->display_name = $user_row["display_name"];
         $this->id = $user_row["id"];
         $this->data = $user_row;
         $this->logged = true;

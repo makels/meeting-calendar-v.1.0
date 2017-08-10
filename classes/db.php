@@ -102,6 +102,20 @@ Class DB {
                   PRIMARY KEY (`id`),
                   UNIQUE KEY `email` (`email`)
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1");
+
+    // Create events table
+    DB::execute("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "events` (
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `owner_id` int(11) NOT NULL,
+                `title` varchar(255) NOT NULL,
+                `description` text NOT NULL,
+                `status` enum('new','in-progress','done') NOT NULL,
+                `start` datetime NOT NULL,
+                `end` datetime NOT NULL,
+                `color` varchar(255) NOT NULL,
+                `color_text` varchar(255) NOT NULL,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;");
     
   }
 

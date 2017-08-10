@@ -18,6 +18,10 @@ body {
     box-shadow: 2px 2px 12px 2px #999;
 }
 
+button {
+    outline: none;
+}
+
 h1, h2, h3 {
     margin: 0;
 }
@@ -289,4 +293,56 @@ header .header-wrapper {
     width: 980px;
     margin: 20px auto 0 auto;
     text-align: center;
+}
+
+.event-wrapper {
+    display: none;
+    width: 500px;
+    position: fixed;
+    z-index: 19000;;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 10px;
+}
+
+.event-title {
+    padding: 7px;
+    font-size: 14px;
+    border-radius: 10px 10px 0 0;
+}
+
+.event-body {
+    padding: 10px;
+}
+
+.event-body input {
+    width: 350px;
+    margin-top: 7px;
+    float: right;
+}
+
+.event-body select {
+    width: 362px;
+    margin-top: 7px;
+    float: right;
+}
+
+.event-body textarea {
+    width: 470px;
+    height: 100px;
+}
+
+.event-body label {
+    line-height: 40px;
+
+}
+
+.buttons-wrapper {
+    padding: 10px;
+    height: 40px;
+}
+
+.buttons-wrapper button {
+    margin-right: 10px;
+    float: right;
 }

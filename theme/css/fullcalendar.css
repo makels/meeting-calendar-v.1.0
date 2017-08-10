@@ -172,7 +172,7 @@ NOTE: use percentage font sizes or else old IE chokes
 	box-sizing: border-box;
 
 	/* dimensions */
-	margin: 0;
+	margin: 0 10px 0 0 !important;
 	height: 2.1em;
 	padding: 0 .6em;
 

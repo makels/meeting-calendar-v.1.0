@@ -3,6 +3,8 @@
  */
 var App = function() {
 
+    this.calendar = null;
+
     this.alert = function(text) {
         var wnd = new ZWindow({
             title: "<span class='fa fa-warning'>&nbsp;</span> Attention",
@@ -85,6 +87,7 @@ var App = function() {
     this.init = function() {
         this.initMask();
         this.initCalendar();
+        this.setCurrentMonthEvents([]);
     }
 
     this.initMask = function() {
@@ -92,10 +95,18 @@ var App = function() {
     }
 
     this.initCalendar = function() {
-        $('#calendar').fullCalendar({
+        this.calendar = $('#calendar').fullCalendar({
             theme: true,
+            customButtons: {
+                add_event: {
+                    text: 'Add Event',
+                    click: function() {
+                        appEvent.addEvent();
+                    }
+                }
+            },
             header: {
-                left: 'prev,next today',
+                left: 'prev,next today add_event',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay,listMonth'
             },
@@ -103,7 +114,33 @@ var App = function() {
             navLinks: true,
             editable: true,
             eventLimit: true,
-            events: []
+            events: [],
+            eventClick: function(calEvent) {
+                appEvent.openEvent(calEvent.id);
+            }
+        });
+    }
+
+    this.setCurrentMonthEvents = function(owners) {
+        var scope = this;
+        var start = moment().add(1, 'months').date(0).format('YYYY-MM-01 00:00');
+        var end = moment().add(1, 'months').date(0).format('YYYY-MM-DD 23:59');
+        $.ajax({
+            url: "/api/getEvents",
+            type: "post",
+            dataType: "json",
+            data: {
+                start: start,
+                end: end,
+                owners: owners
+            },
+            success: function(res) {
+                if(res.events && res.events.length > 0) {
+                    scope.calendar.fullCalendar('removeEventSources');
+                    scope.calendar.fullCalendar('addEventSource', res.events);
+                    scope.calendar.fullCalendar('refetchEvents');
+                }
+            }
         });
     }
 }

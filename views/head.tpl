@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/theme/css/zwindow.css" type="text/css" />
 <link rel="stylesheet" href="/theme/css/font-awesome.min.css" type="text/css" />
 <link rel="stylesheet" href="/theme/css/jquery-ui.min.css" type="text/css" />
+<link rel="stylesheet" href="/theme/css/jquery.datetimepicker.css" type="text/css" />
+<link rel="stylesheet" href="/theme/css/spectrum.css" type="text/css" />
 <link rel="stylesheet" href="/theme/css/fullcalendar.css" type="text/css" />
 <link rel="stylesheet" href="/theme/css/fullcalendar.print.css" type="text/css" media="print" />
 
@@ -18,4 +20,7 @@
 <script src='/theme/js/jquery.min.js' type="text/javascript"></script>
 <script src='/theme/js/fullcalendar.js' type="text/javascript"></script>
 <script src='/theme/js/zwindow.js' type="text/javascript"></script>
+<script src='/theme/js/spectrum.js' type="text/javascript"></script>
+<script src='/theme/js/event.js' type="text/javascript"></script>
+<script src='/theme/js/jquery.datetimepicker.full.min.js' type="text/javascript"></script>
 <script src='/theme/js/app.js' type="text/javascript"></script>
