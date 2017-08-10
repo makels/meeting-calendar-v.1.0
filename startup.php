@@ -16,7 +16,7 @@ $config = new Config();
 
 // DB
 define ('DB_HOST', $config->get("/settings/database/host"));
-define ('DB_PORT', $config->get("/settings/database/port"));
+define ('DB_PORT', intval($config->get("/settings/database/port")));
 define ('DB_NAME', $config->get("/settings/database/name"));
 define ('DB_PREFIX', $config->get("/settings/database/prefix"));
 define ('DB_USER', $config->get("/settings/database/user"));
