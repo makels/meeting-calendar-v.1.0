@@ -6,7 +6,7 @@
     <port>3306</port>
     <name>meeting</name>
     <prefix>mc_</prefix>
-    <user>root</user>
-    <pass>Zerg1979</pass>
+    <user></user>
+    <pass></pass>
   </database>
 </settings>
