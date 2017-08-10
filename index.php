@@ -4,6 +4,11 @@ if(!is_writable($_SERVER["DOCUMENT_ROOT"] . "/tmp")) {
   exit;
 }
 
+if(!is_writable($_SERVER["DOCUMENT_ROOT"] . "/config.xml")) {
+  echo "Set writable permission to /config.xml";
+  exit;
+}
+
 session_start();
 
 ini_set('error_reporting', E_ALL);
