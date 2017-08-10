@@ -135,6 +135,32 @@ button {
 
 }
 
+.main_content {
+    display: inline-block;
+}
+
+#calendar {
+    width: 800px;
+    float: right;
+}
+
+#users_list_wrapper {
+    width: 170px;
+    margin-right: 10px;
+    float: left;
+}
+
+.ulist_title {
+    padding: 7px;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+}
+
+.ulist_body {
+    padding: 10px;
+    border: 1px solid #D7D7D7;
+    border-radius: 0 0 5px 5px;
+}
 
 .login .field {
     position: relative;

@@ -90,11 +90,19 @@ var App = function() {
     this.init = function() {
         this.initMask();
         this.initCalendar();
+        this.initUsersList();
         this.setCurrentMonthEvents([]);
     }
 
     this.initMask = function() {
         $('.zmask').height($(window).height());
+    }
+
+    this.initUsersList = function() {
+        var scope = this;
+        $(".ulist_body").find("input").change(function() {
+            scope.setCurrentMonthEvents();
+        });
     }
 
     this.initCalendar = function() {
@@ -160,7 +168,11 @@ var App = function() {
     }
 
     this.getOwners = function() {
-        return [];
+        var owners = [];
+        $.each($(".ulist_body").find("input"), function() {
+           if($(this).is(":checked") === true) owners.push($(this).attr("user_id"));
+        })
+        return owners;
     }
 }
 
