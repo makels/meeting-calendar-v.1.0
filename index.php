@@ -1,4 +1,9 @@
 <?php
+if(substr(sprintf('%o', fileperms('/tmp')), -3) != "777") {
+  echo "Set 777 permission to folder /tmp";
+  exit;
+}
+
 session_start();
 
 ini_set('error_reporting', E_ALL);
