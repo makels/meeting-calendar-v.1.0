@@ -54,7 +54,7 @@ Class Controller_Installer Extends Controller_Base {
             define ('DB_PASS', $config->get("/settings/database/pass"));
 
             try {
-                $db_link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, '', DB_PORT);
+                $db_link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, 'mysql', DB_PORT);
                 if(!$db_link) {
                     return "Error connection to MySQL";
                 } else {
