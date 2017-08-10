@@ -88,8 +88,8 @@ Class DB {
     $link = $registry->get("dl");
 
     // Create DATABASE
-    DB::execute("CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "`");
-    mysqli_select_db($link, DB_NAME);
+    DB::execute("CREATE DATABASE IF NOT EXISTS `" . IDB_NAME . "`");
+    mysqli_select_db($link, IDB_NAME);
     // Create members
     DB::execute("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "users` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
