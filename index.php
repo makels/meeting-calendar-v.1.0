@@ -1,6 +1,6 @@
 <?php
-if(substr(sprintf('%o', fileperms('/tmp')), -3) != "777") {
-  echo "Set 777 permission to folder /tmp";
+if(!is_writable("/tmp")) {
+  echo "Set writable permission to folder /tmp";
   exit;
 }
 
