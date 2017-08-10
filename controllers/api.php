@@ -34,24 +34,51 @@ Class Controller_Api extends Controller_Base {
         echo json_encode(array("result" => true, "msg" => "success", "event" => $event));
     }
 
-    function addEvent() {
-
-    }
-
     function saveEvent() {
+        $user = $this->registry->get("user");
         $data = Http::post("form_data");
         $model = DB::loadModel("events");
-        if($data["id"] == 0) $model->addEvent($data);
-        else $model->saveEvent($data);
+        if($data["id"] == 0) {
+            $model->addEvent($data);
+        } else {
+            $event = $model->getEvent($data["id"]);
+            if($user->su != 1 && $event["owner_id"] != $user->id) {
+                echo json_encode(array("result" => false, "msg" => "not have permissions"));
+                exit;
+            }
+            $model->saveEvent($data);
+        }
         echo json_encode(array("result" => true, "msg" => "success"));
     }
 
     function deleteEvent() {
+        $user = $this->registry->get("user");
         $id = Http::post("id");
         if($id > 0) {
             $model = DB::loadModel("events");
+            $event = $model->getEvent($id);
+            if($user->su != 1 && $event["owner_id"] != $user->id) {
+                echo json_encode(array("result" => false, "msg" => "not have permissions"));
+                exit;
+            }
             $model->deleteEvent($id);
         }
+        echo json_encode(array("result" => true, "msg" => "success"));
+    }
+
+    function moveEvent() {
+        $user = $this->registry->get("user");
+        $id = Http::post("id");
+        $model = DB::loadModel("events");
+        $event = $model->getEvent($id);
+        if($user->su != 1 && $event["owner_id"] != $user->id) {
+            echo json_encode(array("result" => false, "msg" => "not have permissions"));
+            exit;
+        }
+        $event = $model->getEvent($id);
+        $event["start"] = Http::post("start");
+        $event["end"] = Http::post("end");
+        $model->saveEvent($event);
         echo json_encode(array("result" => true, "msg" => "success"));
     }
 

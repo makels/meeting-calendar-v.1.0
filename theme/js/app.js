@@ -75,6 +75,9 @@ var App = function() {
                             },
                             success: function() {
                                 scope.alert("The invite sent successfully");
+                            },
+                            error: function() {
+                                scope.alert("Email already exist");
                             }
                         });
                     }
@@ -95,6 +98,7 @@ var App = function() {
     }
 
     this.initCalendar = function() {
+        var scope = this;
         this.calendar = $('#calendar').fullCalendar({
             theme: true,
             customButtons: {
@@ -117,12 +121,23 @@ var App = function() {
             events: [],
             eventClick: function(calEvent) {
                 appEvent.openEvent(calEvent.id);
+            },
+            eventDrop: function(event) {
+                appEvent.moveEvent(event, function() {
+                    scope.setCurrentMonthEvents();
+                });
+            },
+            eventResize: function(event) {
+                appEvent.moveEvent(event, function() {
+                    scope.setCurrentMonthEvents();
+                });
             }
         });
     }
 
-    this.setCurrentMonthEvents = function(owners) {
+    this.setCurrentMonthEvents = function() {
         var scope = this;
+        var owners = this.getOwners();
         var start = moment().add(1, 'months').date(0).format('YYYY-MM-01 00:00');
         var end = moment().add(1, 'months').date(0).format('YYYY-MM-DD 23:59');
         $.ajax({
@@ -142,6 +157,10 @@ var App = function() {
                 }
             }
         });
+    }
+
+    this.getOwners = function() {
+        return [];
     }
 }
 

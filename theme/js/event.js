@@ -56,11 +56,11 @@ var Event = function() {
                             id: id
                         },
                         success: function() {
-                            scope.hide();
+                            app.setCurrentMonthEvents();
                         }
                     });
                 } else {
-                    scope.hide();
+                    app.setCurrentMonthEvents();
                 }
             })
         });
@@ -143,6 +143,23 @@ var Event = function() {
         });
     }
 
+    this.moveEvent = function(event) {
+        var scope = this;
+        $.ajax({
+            url: "/api/moveEvent",
+            type: "post",
+            dataType: "json",
+            data: {
+                id: event.id,
+                start: event.start != null ? event.start.format("YYYY-MM-DD HH:mm") : "",
+                end: event.end != null ? event.end.format("YYYY-MM-DD HH:mm") : "",
+            },
+            success: function() {
+                app.setCurrentMonthEvents();
+            }
+        });
+    }
+
     this.initScreenResize = function() {
         var scope = this;
         $(window).resize(function() {
@@ -174,6 +191,13 @@ var Event = function() {
 
     this.setData = function(data) {
         var readonly = true;
+
+        $("#event_id").val(data.id);
+        $("#event_owner_id").val(data.owner_id);
+        if(data.display_name != "") {
+            $("#event_owner").val(data.display_name);
+        }
+
         if($("#user_su").val() == "1" || $("#user_id").val() == $("#event_owner_id").val()) {
             $(".event-wrapper").find(".buttons-wrapper.writable").show();
             $(".event-wrapper").find(".buttons-wrapper.readonly").hide();
@@ -185,11 +209,6 @@ var Event = function() {
             $(".event-wrapper").find(".buttons-wrapper.readonly").show();
         }
 
-        $("#event_id").val(data.id);
-        $("#event_owner_id").val(data.owner_id);
-        if(data.display_name != "") {
-            $("#event_owner").val(data.display_name);
-        }
         $("#event_title").val(data.title).attr("disabled", readonly);
         $("#event_start").val(data.start).attr("disabled", readonly);
         $("#event_end").val(data.end).attr("disabled", readonly);
@@ -229,7 +248,7 @@ var Event = function() {
             owner_id: $("#event_owner_id").val(),
             display_name: $("#user_display_name").val(),
             title: "",
-            start: moment().format("YYYY-MM-DD HH:mm"),
+            start: app.calendar.fullCalendar("getDate").format("YYYY-MM-DD HH:mm"),
             end: "",
             status: "new",
             color: "#0c343d",

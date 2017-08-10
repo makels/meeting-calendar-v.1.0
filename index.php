@@ -4,6 +4,9 @@ session_start();
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 0);
 
+// SERVER
+define ("HTTP_HOST", $_SERVER["HTTP_HOST"]);
+
 // PATH
 define ('DIRSEP', DIRECTORY_SEPARATOR);
 define ('SITE_PATH', realpath(dirname(__FILE__)) . DIRSEP);

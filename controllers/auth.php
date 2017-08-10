@@ -24,7 +24,7 @@ Class Controller_Auth extends Controller_Base {
     function invite() {
         $model = DB::loadModel("user");
         $admin = $this->registry->get("user");
-        $from = $admin->login;
+        $from = "no-reply";
         $to = Http::post("email");
         $key = $model->invite($to);
         $smarty = $this->registry->get("smarty");
@@ -34,7 +34,7 @@ Class Controller_Auth extends Controller_Base {
         $subject = "Invite on registration in meeting calendar";
         $header = "From: $from\r\n";
         $header .= "Content-type: text/html; charset=utf-8\r\n";
-        $header .= "Content-Transfer-Encoding: base64\r\n";
+        //$header .= "Content-Transfer-Encoding: base64\r\n";
         $header .= "X-Mailer: PHP/" . phpversion() ."\r\n";
         $header .= "MIME-Version: 1.0\r\n";
         mail($to, $subject, $text, $header);
@@ -42,18 +42,27 @@ Class Controller_Auth extends Controller_Base {
     }
 
     function register() {
-        $invite_key = Http::post("invite_key");
-        $display_name = Http::post("name");
+        $invite_key = Http::get("invite_key");
+        $model = DB::loadModel("user");
+        $user_data = $model->getByInviteKey($invite_key);
+        $smarty = $this->registry->get("smarty");
+        $smarty->assign("user_data", $user_data);
+        $this->display("register");
+    }
+    
+    function accept() {
+        $display_name = Http::post("display_name");
         $email= Http::post("email");
         $password = Http::post("password");
-        if($invite_key != null && $display_name != null && $email != null && $password != null) {
+        if($display_name != null && $email != null && $password != null) {
             $model = DB::loadModel("user");
-            $model->acceptInvite(array(
-                "invite_key" => $invite_key,
-                "display_name" => $display_name,
+            $model->update(array(
                 "email" => $email,
+                "display_name" => $display_name,
                 "password" => $password
             ));
+            User::logout();
+            $this->registry->set("user", null);
             $user = new User();
             $user->login = $email;
             $user->password = $password;

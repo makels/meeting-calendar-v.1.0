@@ -35,22 +35,15 @@
             }
 
             .invite_body p {
-                text-align: justify;
-                color: #1e5799;
+                color: #333;
             }
 
             .invite_body label {
                 line-height: 22px;
             }
 
-            .invite_body button {
-                margin-top: 10px;
-                padding: 5px;
-                background-color: #1e5799;
-                border: none;
-                color: #fff;
-                border-radius: 3px;
-                cursor: pointer;
+            .invite_body a {
+                color: #1e5799;
             }
         </style>
         {/literal}
@@ -58,14 +51,8 @@
     <body>
         <div class="invite_title">Meeting Calendar</div>
         <div class="invite_body">
-            <p>You receive this email for registration in Meeting Calendar system. Please fill a few fields and push button "Registration."</p>
-            <form method="post" action="meeting.makels.com/auth/register">
-                <input type="hidden" name="invite_key" value="{$invite_key}" />
-                <label>Name:</label><input type="text" name="name" /><br><br>
-                <label>Email:</label><input type="email" name="email" value="{$email}" /><br><br>
-                <label>Password:</label><input type="password" name="password" /><br><br>
-                <button type="submit">Registration</button>
-            </form>
+            <p>You received this email for registration in "Meeting Calendar" system. Please go to link:</p>
+            <a href="http://{$smarty.const.HTTP_HOST}/auth/register?invite_key={$invite_key}">http://{$smarty.const.HTTP_HOST}/auth/register?invite_key={$invite_key}</a>
         </div>
     </body>
 </html>

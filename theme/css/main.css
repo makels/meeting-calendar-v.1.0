@@ -346,3 +346,7 @@ header .header-wrapper {
     margin-right: 10px;
     float: right;
 }
+
+.login-window.register {
+    height: 220px;
+}
