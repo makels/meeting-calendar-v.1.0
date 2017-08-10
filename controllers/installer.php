@@ -46,15 +46,15 @@ Class Controller_Installer Extends Controller_Base {
             $config->set("/settings/database/prefix", $prefix);
 
             // DB
-            define ('DB_HOST', $config->get("/settings/database/host"));
-            define ('DB_PORT', intval($config->get("/settings/database/port")));
-            define ('DB_NAME', $config->get("/settings/database/name"));
-            define ('DB_PREFIX', $config->get("/settings/database/prefix"));
-            define ('DB_USER', $config->get("/settings/database/user"));
-            define ('DB_PASS', $config->get("/settings/database/pass"));
+            define ('IDB_HOST', $config->get("/settings/database/host"));
+            define ('IDB_PORT', intval($config->get("/settings/database/port")));
+            define ('IDB_NAME', $config->get("/settings/database/name"));
+            define ('IDB_PREFIX', $config->get("/settings/database/prefix"));
+            define ('IDB_USER', $config->get("/settings/database/user"));
+            define ('IDB_PASS', $config->get("/settings/database/pass"));
 
             try {
-                $db_link = mysqli_connect(DB_HOST, DB_USER, DB_PASS, 'mysql', DB_PORT);
+                $db_link = mysqli_connect(IDB_HOST, IDB_USER, IDB_PASS, 'mysql', IDB_PORT);
                 if(!$db_link) {
                     return "Error connection to MySQL";
                 } else {
@@ -70,7 +70,7 @@ Class Controller_Installer Extends Controller_Base {
                     exit;
                 }
             } catch (Exception $ex) {
-                return "Error connection to MySQL" . $ex->getMessage();
+                return "Error connection to MySQL: " . $ex->getMessage();
             }
         }
     }
