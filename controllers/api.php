@@ -42,7 +42,7 @@ Class Controller_Api extends Controller_Base {
             $model->addEvent($data);
         } else {
             $event = $model->getEvent($data["id"]);
-            if($user->su != 1 && $event["owner_id"] != $user->id) {
+            if($user->is_admin != 1 && $event["owner_id"] != $user->id) {
                 echo json_encode(array("result" => false, "msg" => "not have permissions"));
                 exit;
             }
@@ -57,7 +57,7 @@ Class Controller_Api extends Controller_Base {
         if($id > 0) {
             $model = DB::loadModel("events");
             $event = $model->getEvent($id);
-            if($user->su != 1 && $event["owner_id"] != $user->id) {
+            if($user->is_admin != 1 && $event["owner_id"] != $user->id) {
                 echo json_encode(array("result" => false, "msg" => "not have permissions"));
                 exit;
             }
@@ -71,7 +71,7 @@ Class Controller_Api extends Controller_Base {
         $id = Http::post("id");
         $model = DB::loadModel("events");
         $event = $model->getEvent($id);
-        if($user->su != 1 && $event["owner_id"] != $user->id) {
+        if($user->is_admin != 1 && $event["owner_id"] != $user->id) {
             echo json_encode(array("result" => false, "msg" => "not have permissions"));
             exit;
         }
